@@ -143,6 +143,8 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
+                
+                getActionBar().setTitle(R.string.app_name);
 
                 if (!mUserLearnedDrawer) {
                     mUserLearnedDrawer = true;
@@ -169,8 +171,18 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
+        
         if (mDrawerListView != null) {
+        	String itemTitle;
+        	
+        	itemTitle = (String) mDrawerListView.getItemAtPosition(position);
+        	
             mDrawerListView.setItemChecked(position, true);
+            
+            if(itemTitle != null)
+            {
+            	getActionBar().setTitle(itemTitle);
+            }
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
