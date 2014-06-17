@@ -87,6 +87,7 @@ public class ItemsList extends ListFragment {
             Item item = new Item();
             item.setMainHeader(mainHeaderTitle + i);
             item.setSecondaryHeader("Gender " + i);
+            item.setImageUrl("http://www.brunocasari.net/Frontend/Images/Developer.jpg");
             dummies.add(item);
         }
 
