@@ -6,6 +6,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -18,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.sample.album.common.ItemsGridView;
 import com.sample.album.common.ItemsList;
 
 
@@ -42,11 +44,24 @@ public class AlbumSampleMain extends Activity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        FragmentManager fragmentManager = getFragmentManager();
-
-        ItemsList itemsList = ItemsList.newInstance(position);
+    	Configuration config;
+        FragmentManager fragmentManager;
+        Fragment fragmentToReplace;
+        
+        fragmentManager = getFragmentManager();
+        config = getResources().getConfiguration();
+        
+        //If there is at least 820dp available display the table version (gridview). If not display listview.
+        if(config.screenWidthDp >= 820)
+        {
+        	fragmentToReplace = ItemsGridView.newInstance(position);
+        } else 
+        {
+        	fragmentToReplace = ItemsList.newInstance(position);
+        }
+        
         fragmentManager.beginTransaction()
-                .replace(R.id.container, itemsList)
+                .replace(R.id.container, fragmentToReplace)
                 .commit();
     }
 }

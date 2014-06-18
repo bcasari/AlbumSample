@@ -12,14 +12,15 @@ import com.fedorvlasov.lazylist.ImageLoader;
 import com.sample.album.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ItemsAdapter extends BaseAdapter {
-    private ArrayList<Item> items;
+    private List<Item> items;
     private Context mContext;
     private LayoutInflater layoutInflater;
     private ImageLoader imageLoader;
 
-    public ItemsAdapter(ArrayList<Item> items, Context mContext) {
+    public ItemsAdapter(List<Item> items, Context mContext) {
         this.items = items;
         this.mContext = mContext;
         this.layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
