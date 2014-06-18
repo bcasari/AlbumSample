@@ -52,6 +52,7 @@ public class AlbumSampleMain extends Activity
         config = getResources().getConfiguration();
         
         //If there is at least 820dp available display the table version (gridview). If not display listview.
+        //In a tablet if space available is less than 820dp (portrait for example), the ListView will be displayed.
         if(config.screenWidthDp >= 820)
         {
         	fragmentToReplace = ItemsGridView.newInstance(position);
